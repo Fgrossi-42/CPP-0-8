@@ -6,7 +6,7 @@
 /*   By: fgrossi <fgrossi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:57:20 by fgrossi           #+#    #+#             */
-/*   Updated: 2023/01/13 12:06:42 by fgrossi          ###   ########.fr       */
+/*   Updated: 2023/01/13 15:58:38 by fgrossi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,14 @@ PhoneBook::~PhoneBook()
 {
 }
 
-void PhoneBook::show_startup(void)
-{
-	std::cout << "# PhoneBook" << std::endl;
-	std::cout << "# Enter your command [HELP, ADD, SEARCH, EXIT]:" << std::endl;
-}
-
 void PhoneBook::add_contact(void)
 {
-	if (this->amount == 8)
-		std::cout << "# The directory is full !" << std::endl;
+	if (this->amount == 3)
+	{
+		this->amount = 0;
+		this->contacts[this->amount].set_informations(this->amount + 1);
+		this->amount++;
+	}
 	else if (this->contacts[this->amount].set_informations(this->amount + 1))
 		this->amount++;
 }

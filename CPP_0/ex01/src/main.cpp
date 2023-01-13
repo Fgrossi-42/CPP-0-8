@@ -6,7 +6,7 @@
 /*   By: fgrossi <fgrossi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:07:04 by fgrossi           #+#    #+#             */
-/*   Updated: 2023/01/13 12:12:04 by fgrossi          ###   ########.fr       */
+/*   Updated: 2023/01/13 15:54:42 by fgrossi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int
 	bool run;
 	std::string command;
 
-	PhoneBook.show_startup();
+	std::cout << "Enter your command bewtwenn ADD, SEARCH and EXIT:" << std::endl;
 	run = true;
 	while (run)
 	{
@@ -30,10 +30,7 @@ int
 		else if (command == "SEARCH")
 			PhoneBook.search_contact();
 		else if (command == "EXIT")
-		{
-			std::cout << "# Bye." << std::endl;
 			run = false;
-		}
 	}
 	return (0);
 }
