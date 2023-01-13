@@ -1,36 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fgrossi <fgrossi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/12 18:27:29 by fgrossi           #+#    #+#             */
-/*   Updated: 2023/01/13 11:09:14 by fgrossi          ###   ########.fr       */
+/*   Created: 2023/01/13 11:08:29 by fgrossi           #+#    #+#             */
+/*   Updated: 2023/01/13 12:36:52 by fgrossi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
 
 # include <iostream>
 # include <iomanip>
 # include <string>
-# include "Contact.hpp"
 
-class PhoneBook
+class Contact
 {
 private:
-	Contact	contacts[8];
-	int		amount;
-public:
-	PhoneBook();
-	virtual ~PhoneBook();
+	int					index;
+	static std::string	fields_name[5];
+	std::string			informations[5];
 
-	void	show_startup(void);
-	void	add_contact(void);
-	void	search_contact(void);
-	void	show_search_header(void);
+	enum Field {
+		FirstName = 0,
+		LastName,
+		Nickname,
+		Phone,
+		Secret
+	};
+public:
+	Contact();
+	virtual ~Contact();
+
+	bool	set_informations(int index);
+	void	display_header(void);
+	void	display(void);
 };
 
 #endif
