@@ -6,7 +6,7 @@
 /*   By: fgrossi <fgrossi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 11:12:10 by fgrossi           #+#    #+#             */
-/*   Updated: 2023/01/13 15:56:45 by fgrossi          ###   ########.fr       */
+/*   Updated: 2023/01/16 16:53:58 by fgrossi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ bool Contact::set_informations(int index)
 	this->index = index;
 	for (int i = FirstName; i <= Secret; i++)
 	{
-		std::cout << "# " << Contact::fields_name[i] << ":\n+";
+		std::cout << Contact::fields_name[i] << ":\n";
 		std::getline(std::cin, this->informations[i]);
 	}
 	size_t totalLength = 0;
@@ -43,10 +43,10 @@ bool Contact::set_informations(int index)
 		totalLength += this->informations[i].length();
 	if (totalLength == 0)
 	{
-		std::cout << "# Empty contact not added !" << std::endl;
+		std::cout << "Empty contact not added !" << std::endl;
 		return (false);
 	}
-	std::cout << "# Contact added !" << std::endl;
+	std::cout << "Contact added !" << std::endl;
 	return (true);
 }
 
@@ -66,7 +66,7 @@ void Contact::display_header()
 
 void Contact::display(void)
 {
-	std::cout << "# Contact [" << this->index << "]" << std::endl;
+	std::cout << "Contact [" << this->index << "]" << std::endl;
 	for (int i = FirstName; i <= Secret; i++)
 	{
 		std::cout << Contact::fields_name[i] << ": ";

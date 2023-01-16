@@ -6,7 +6,7 @@
 /*   By: fgrossi <fgrossi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:57:20 by fgrossi           #+#    #+#             */
-/*   Updated: 2023/01/13 15:58:38 by fgrossi          ###   ########.fr       */
+/*   Updated: 2023/01/16 16:53:49 by fgrossi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,16 @@ void PhoneBook::search_contact(void)
 	int	index;
 
 	if (this->amount == 0)
-		std::cout << "# Add a contact before searching !" << std::endl;
+		std::cout << "Add a contact before searching !" << std::endl;
 	else
 	{
 		this->show_search_header();
-		std::cout << "# Enter Index to display Informations or 0 to Exit\n~";
+		std::cout << "Enter Index to display Informations or 0 to Exit\n~";
 		while (!(std::cin >> index) || (index < 0 || index > this->amount))
 		{
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			std::cout << "# Invalid Index\n~";
+			std::cout << "Invalid Index\n~";
 		}
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		if (index > 0)
