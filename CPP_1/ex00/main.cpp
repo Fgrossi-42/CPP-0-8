@@ -1,12 +1,11 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: fgrossi <fgrossi@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 17:25:35 by fgrossi           #+#    #+#             */
-/*   Updated: 2023/01/16 17:25:36 by fgrossi          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "Zombie.hpp"
 
+int	main(void)
+{
+	Zombie	zombie1("Stack Zombie");
+	Zombie	*zombie2 = newZombie("Heap Zombie");
+
+	randomChump("Random Chump Zombie");
+	delete zombie2;
+	return (0);
+}
