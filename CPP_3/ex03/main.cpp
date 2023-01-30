@@ -1,11 +1,13 @@
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main(void)
 {
     ClapTrap clap("Pollo");
     ScavTrap scav("Scav");
     FragTrap frag("Kai");
+    DiamondTrap diamond("Diamond");
 
     std::cout << "----------------" << std::endl;
     std::cout << "clapTrap name: " << clap.getName() << std::endl;
@@ -24,6 +26,12 @@ int main(void)
     std::cout << "FragTrap energy points: " << frag.getEnergyPoints() << std::endl;
     std::cout << "FragTrap attack damage: " << frag.getAttackDamage() << std::endl;
     frag.HighFivesGuys();
-
+    std::cout << "----------------" << std::endl;
+    std::cout << "DiamondTrap name: " << diamond.getName() << std::endl;
+    std::cout << "DiamondTrap hit points: " << diamond.getHitPoints() << std::endl;
+    std::cout << "DiamondTrap energy points: " << diamond.getEnergyPoints() << std::endl;
+    std::cout << "DiamondTrap attack damage: " << diamond.getAttackDamage() << std::endl;
+    diamond.whoAmI();
+    std::cout << std::endl<< std::endl << std::endl;
     return 0;
 }

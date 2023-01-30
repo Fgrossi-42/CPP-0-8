@@ -1,7 +1,17 @@
 #include "ScavTrap.hpp"
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
+
+ScavTrap::ScavTrap(void) : ClapTrap()
 {
-    std::cout << "ScavTrap constructor called" << std::endl;
+	std::cout << "ScavTrap default constructor called" << std::endl;
+}
+
+ScavTrap::ScavTrap(std::string name)
+{
+	std::cout << "ScavTrap constructor called" << std::endl;
+	this->_name = name;
+	this->_hitPoints = 100;
+	this->_energyPoints = 50;
+	this->_attackDamage = 20;
 }
 
 ScavTrap::ScavTrap(ScavTrap const & src) : ClapTrap(src)
@@ -20,7 +30,9 @@ ScavTrap & ScavTrap::operator=(ScavTrap const & rhs)
     std::cout << "ScavTrap assignation operator called" << std::endl;
      if (this != &rhs)
     {
-        std::cout << "not equal i guess?" << std::endl;
+        this->_hitPoints = rhs._hitPoints;
+        this->_energyPoints = rhs._energyPoints;
+        this->_attackDamage = rhs._attackDamage;
     }
     return *this;
 }
