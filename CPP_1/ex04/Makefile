@@ -6,7 +6,7 @@ CXX				= clang++
 RM				= rm -rf
 CXXFLAGS		= -Wall -Wextra -Werror -I.
 
-NAME			= Thriller
+NAME			= Replace
 
 all:			$(NAME)
 
