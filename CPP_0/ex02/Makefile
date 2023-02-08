@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: fgrossi <fgrossi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/01/12 17:36:53 by fgrossi           #+#    #+#              #
-#    Updated: 2023/01/16 17:17:59 by fgrossi          ###   ########.fr        #
+#    Created: 2023/02/03 12:46:52 by fgrossi           #+#    #+#              #
+#    Updated: 2023/02/03 12:52:09 by fgrossi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS			= src/Account.cpp src/tests.cpp 
+SRCS			=	tests.cpp Account.cpp
 				
 OBJS			= $(SRCS:.cpp=.o)
 

@@ -5,14 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: fgrossi <fgrossi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/01/12 17:36:53 by fgrossi           #+#    #+#              #
-#    Updated: 2023/01/13 12:59:55 by fgrossi          ###   ########.fr        #
+#    Created: 2023/02/03 12:46:12 by fgrossi           #+#    #+#              #
+#    Updated: 2023/02/03 12:46:13 by fgrossi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS			=./src/main.cpp \
-				./src/Contact.cpp \
-				./src/PhoneBook.cpp
+SRCS			=	main.cpp Contact.cpp PhoneBook.cpp
 				
 OBJS			= $(SRCS:.cpp=.o)
 

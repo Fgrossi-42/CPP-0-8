@@ -5,36 +5,34 @@
 #                                                     +:+ +:+         +:+      #
 #    By: fgrossi <fgrossi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/01/12 17:36:53 by fgrossi           #+#    #+#              #
-#    Updated: 2023/01/12 17:36:54 by fgrossi          ###   ########.fr        #
+#    Created: 2023/02/03 12:42:14 by fgrossi           #+#    #+#              #
+#    Updated: 2023/02/03 12:42:38 by fgrossi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS			= megaphone.cpp
+SRCS			=	megaphone.cpp
+				
 OBJS			= $(SRCS:.cpp=.o)
 
 CXX				= clang++
-RM				= rm -f
+RM				= rm -rf
 CXXFLAGS		= -Wall -Wextra -Werror -I.
 
-NAME			= megaphone
+NAME			= Megaphone
 
 all:			$(NAME)
 
 $(NAME):		$(OBJS)
 				$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
+				mkdir OBJS
+				mv $(OBJS) OBJS
 
 clean:
-				$(RM) $(OBJS)
+				$(RM) OBJS
 
 fclean:			clean
 				$(RM) $(NAME)
 
 re:				fclean $(NAME)
-
-test:			$(NAME)
-				./megaphone "shhhhh... I think the students are asleep..."
-				./megaphone Damnit " ! " "Sorry students, I thought this thing was off."
-				./megaphone
 
 .PHONY:			all clean fclean re test
