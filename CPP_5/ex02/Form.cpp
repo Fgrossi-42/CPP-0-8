@@ -61,3 +61,12 @@ const char *Form::GradeTooLowException::what() const throw()
 {
     return ("Grade is too low");
 }
+
+void Form::execute(Bureaucrat const &executor) const
+{
+    if (executor.getGrade() > _gradeToExecute)
+        throw Form::GradeTooLowException();
+    else if (!_isSigned)
+        throw Form::GradeTooLowException();
+}
+

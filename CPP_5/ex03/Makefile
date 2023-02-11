@@ -1,4 +1,4 @@
-SRCS			=	main.cpp Bureaucrat.cpp Form.cpp
+SRCS			=	main.cpp Bureaucrat.cpp Intern.cpp Form.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 				
 OBJS			= $(SRCS:.cpp=.o)
 
@@ -6,7 +6,7 @@ CXX				= clang++
 RM				= rm -rf
 CXXFLAGS		= -Wall -Wextra -Werror -I.
 
-NAME			= Form
+NAME			= Intern
 
 all:			$(NAME)
 
