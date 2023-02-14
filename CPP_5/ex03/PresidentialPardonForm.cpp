@@ -3,6 +3,7 @@
 PresidentialPardonForm::PresidentialPardonForm(std::string const &target)
     : Form("PresidentialPardonForm", 25, 5), _target(target)
 {
+    std::cout << "PresidentialPardonForm created" << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &other)
@@ -12,6 +13,7 @@ PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &oth
 
 PresidentialPardonForm::~PresidentialPardonForm()
 {
+    std::cout << "PresidentialPardonForm destroyed" << std::endl;
 }
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm const &other)

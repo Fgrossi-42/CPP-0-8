@@ -2,6 +2,7 @@
 
 Intern::Intern()
 {
+    std::cout << "Intern hired" << std::endl;
 }
 
 Intern::Intern(const Intern &copy)
@@ -11,6 +12,7 @@ Intern::Intern(const Intern &copy)
 
 Intern::~Intern()
 {
+    std::cout << "Intern fired" << std::endl;
 }
 
 Intern &Intern::operator=(const Intern &copy)

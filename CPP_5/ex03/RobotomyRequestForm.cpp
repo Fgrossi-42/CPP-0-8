@@ -3,6 +3,7 @@
 RobotomyRequestForm::RobotomyRequestForm(std::string const &target)
     : Form("RobotomyRequestForm", 72, 45), _target(target)
 {
+    std::cout << "RobotomyRequestForm created" << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &other)
@@ -12,6 +13,7 @@ RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &other)
 
 RobotomyRequestForm::~RobotomyRequestForm()
 {
+    std::cout << "RobotomyRequestForm destroyed" << std::endl;
 }
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm const &other)

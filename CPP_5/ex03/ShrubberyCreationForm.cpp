@@ -3,6 +3,7 @@
 ShrubberyCreationForm::ShrubberyCreationForm(std::string const &target)
     : Form("ShrubberyCreationForm", 145, 137), _target(target)
 {
+    std::cout << "ShrubberyCreationForm created" << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &other)
@@ -12,6 +13,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &other)
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
+    std::cout << "ShrubberyCreationForm destroyed" << std::endl;
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm const &other)

@@ -5,21 +5,31 @@ int main()
     Intern someRandomInternA;
     Intern someRandomInternB;
     Intern someRandomInternC;
-    Bureaucrat someRandomBureaucrat("someRandomBureaucrat", 1);
     Form* a;
     Form* b;
     Form* c;
-    a = someRandomInternA.makeForm("robotomy request", "Bender");
-    b = someRandomInternB.makeForm("presidential pardon", "Pinocho");
-    c = someRandomInternC.makeForm("shrubbery creation", "POLPO");
+    Form* d;
 
-    a->beSigned(someRandomBureaucrat);
-    a->execute(someRandomBureaucrat);
-    b->beSigned(someRandomBureaucrat);
-    b->execute(someRandomBureaucrat);
-    c->beSigned(someRandomBureaucrat);
-    c->execute(someRandomBureaucrat);
+    std::cout << std::endl << "--------------------------------" << std::endl << std::endl;
+
+    a = someRandomInternA.makeForm("robotomy request", "Bender");
+    std::cout << std::endl << "--------------------------------" << std::endl << std::endl;
+    b = someRandomInternB.makeForm("presidential pardon", "Pinocho");
+    std::cout << std::endl << "--------------------------------" << std::endl << std::endl;
+    c = someRandomInternC.makeForm("shrubbery creation", "POLPO");
+        std::cout << std::endl << "--------------------------------" << std::endl << std::endl;
+
+    try 
+    {
+        d = someRandomInternC.makeForm("polpette al sugo", "Genoveffo");
+    }
+    catch (std::exception &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
     
+    std::cout << std::endl << "--------------------------------" << std::endl << std::endl;
+
     delete a;
     delete b;
     delete c;
