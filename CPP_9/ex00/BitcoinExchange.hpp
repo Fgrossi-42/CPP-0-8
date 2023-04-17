@@ -31,6 +31,7 @@ class BitcoinExchange
         void read_db();
         void compare_dates();
         void remove_spaces();
+        void find_nearest_date(std::string content, std::vector<std::vector<std::string> > database);
 };
 
 #endif
