@@ -2,10 +2,13 @@
 
 int main(int argc, char **argv)
 {
-    (void)argc;
     BitcoinExchange bitcoin;
-    bitcoin.read_file(argv);
-    bitcoin.read_db();
-	bitcoin.remove_spaces();
-    bitcoin.compare_dates();
+    
+    if(argc != 2)
+    {
+        std::cout << "Error: wrong number of arguments" << std::endl;
+        return 0;
+    }
+    bitcoin.read_db_map();
+    bitcoin.compare_dates(argv);
 }

@@ -2,80 +2,53 @@
 
 BitcoinExchange::BitcoinExchange()
 {
-    x = 0;
-    i = 0;
 }
 
 BitcoinExchange::~BitcoinExchange()
 {
 }
 
-void BitcoinExchange::read_file(char **argv)
+void BitcoinExchange::read_db_map()
 {
-    file.open(argv[1]);
-    if (file.is_open())
-    {
-        while (getline(file, line))
-        {
-            std::stringstream s(line);
-            while (getline(s, word, '|'))
-            {
-                row.push_back(word);
-            }
-            content.push_back(row);
-            row.clear();
-        }
-    }
-    file.close();
+	file1.open("data.csv");
+	if (file1.is_open())
+	{
+		while (getline(file1, db_line))
+		{
+			std::stringstream s(db_line);
+			while (getline(s, db_word, ','))
+			{
+				while (getline(s, word, ','))
+				{
+					db_map.insert(std::pair<std::string, std::string>(db_word, word));
+				}
+			}
+		}
+	}
+	file1.close();
 }
 
-void BitcoinExchange::read_db()
+std::string BitcoinExchange::remove_spaces(std::string word)
 {
-    file1.open("data.csv");
-    if (file1.is_open())
-    {
-        while (getline(file1, db_line))
-        {
-            std::stringstream s(db_line);
-            while (getline(s, db_word, ','))
-            {
-                db_row.push_back(db_word);
-            }
-            db_content.push_back(db_row);
-            db_row.clear();
-        }
-    }
-    file1.close();
+	word.erase(std::remove(word.begin(), word.end(), ' '), word.end());
+	return word;
 }
 
-void BitcoinExchange::remove_spaces()
+int BitcoinExchange::check_args(std::string content)
 {
-    for (int i = 0; i < (int)content.size(); i++)
-    {
-        for (int j = 0; j < (int)content[i].size(); j++)
-        {
-            content[i][j].erase(std::remove(content[i][j].begin(), content[i][j].end(), ' '), content[i][j].end());
-        }
-    }
-}
+	std::stringstream input_stringstream(content);
 
-int check_args(std::vector<std::string> content)
-{
-    if (content.size() != 2)
-    {
-        std::cout << "Error: wrong number of arguments" << std::endl;
-        return 0;
-    }
-    if (content[0].size() != 10)
+	getline(input_stringstream,date,' ');
+    if (date.size() != 10 && date.size() != 11)
     {
         std::cout << "Error: wrong date format" << std::endl;
         return 0;
     }
-    for (int i = 0; i < (int)content[0].size(); i++)
+    for (int i = 0; i < (int)date.size(); i++)
     {
         if (i == 4 || i == 7)
         {
-            if (content[0][i] != '-')
+            if (date[i] != '-')
             {
                 std::cout << "Error: wrong date format" << std::endl;
                 return 0;
@@ -83,49 +56,80 @@ int check_args(std::vector<std::string> content)
         }
         else
         {
-            if (!isdigit(content[0][i]))
+            if (!isdigit(date[i]))
             {
                 std::cout << "Error: wrong date format" << std::endl;
                 return 0;
             }
         }
     }
-    for (int i = 0; i < (int)content[1].size(); i++)
-    {
-        if (!isdigit(content[1][i]))
-        {
-            std::cout << "Error: wrong amount format" << std::endl;
-            return 0;
-        }
-    }
+	if(!getline(input_stringstream,date,' '))
+	{
+		std::cout << "Error: bad input => " <<date<< std::endl;
+        return 0;
+	}
+	else
+	{
+		getline(input_stringstream,date);
+		num = std::stof(date);
+		if (num < 0)
+		{
+			std::cout << "Error: not a positive number."<< std::endl;
+			return 0;
+		}
+		if(num >= 2147483648)
+		{
+			std::cout << "Error: too large a number."<< std::endl;
+			return 0;
+		}
+	}
     return 1;
 }
 
-void find_nearest_date(std::string content, std::vector<std::vector<std::string> > database)
+void BitcoinExchange::find_nearest_date(std::string day)
 {
-    
+	std::map<std::string, std::string>::iterator it = db_map.lower_bound(day);
+    if (it == db_map.begin()) {
+        std::cout << "No lower key found" << std::endl;
+    } else {
+        --it;
+        std::cout<<word<<"=>"<<db_word<<" = "<< (std::stof(db_word) * std::stof(it->second))<<std::endl;
+    }
 }
 
-void BitcoinExchange::compare_dates()
+void BitcoinExchange::compare_dates(char **argv)
 {
-    float money;
-    int print = 0;
+	std::map<std::string, std::string>::iterator it;
+	int found = 0;
 
-    for (int i = 0; i < (int)content.size(); i++)
+	file.open(argv[1]);
+    if (file.is_open())
     {
-        print = 0;
-        if(check_args(content[i]) == 0)
-            continue;
-        for (int j = 0; j < (int)db_content.size(); j++)
+        while (getline(file, line))
         {
-            if (!memcmp(content[i][0].c_str(), db_content[j][0].c_str(), 10))
+			if(check_args(line.c_str()) == 0)
+				continue;
+            std::stringstream s(line);
+            while (getline(s, word, '|'))
             {
-                money = stof(content[i][1]) * stof(db_content[j][1]);
-                std::cout<<content[i][0] << " => " << content[i][1] << " = " << money<< std::endl;
-                print = 1;
+				word = remove_spaces(word);
+				for(it = db_map.begin(); it != db_map.end(); it++)
+				{
+					if (memcmp(it->first.c_str(), word.c_str(), 11) == 0)
+					{
+						getline(s, db_word);
+						std::cout<<word<<"=>"<<db_word<<" = "<< (std::stof(db_word) * std::stof(it->second))<<std::endl;
+						found = 1;
+					}
+					getline(s, db_word);
+				}
+				if (found == 0)
+				{
+					find_nearest_date(word);
+				}
+				found = 0;
             }
         }
-        if(print == 0)
-            find_nearest_date(content[i][0], db_content);
     }
+    file.close();
 }
