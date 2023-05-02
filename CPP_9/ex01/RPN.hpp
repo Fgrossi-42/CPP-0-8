@@ -12,15 +12,17 @@
 class RPN
 {
     private:
+        std::vector<std::string> tokens;
+        std::string buf;
         std::string line;
+        std::vector<std::string> stack;
 		int x;
-		int y;
     public:
         RPN();
         ~RPN();
-        void    readLine(char **argv);
+        int    readLine(char **argv);
         int    checkline(char **argv);
-		void	error(std::string str);
+		int     error(std::string str);
 };
 
 #endif
